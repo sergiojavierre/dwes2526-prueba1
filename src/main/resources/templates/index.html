@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+  <meta charset="UTF-8">
+  <title>Ropa</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+  <h1>Tienda de ropa</h1>
+  <nav th:replace="~{fragments/nav}"></nav>
+</header>
+
+  <main>
+    <h2>Prendas</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Marca</th>
+        <th>Tipo de prenda</th>
+        <th>Nº de ejemplares</th>
+        <th>Acciones</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="prenda : ${prendas}">
+        <td th:text="${prenda.marca}"></td>
+        <td th:text="${prenda.tipoPrenda}"></td>
+        <td th:text="${#lists.size(prenda.ejemplares)}"></td>
+        <td><a th:href="'/prendas/'+${prenda.marca}">Ver</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div th:if="${#lists.isEmpty(prendas)}">
+      <p>No hay prendas registradas.</p>
+    </div>
+  </main>
+</body>
+</html>

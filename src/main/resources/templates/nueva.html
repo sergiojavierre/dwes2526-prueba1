@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ropa</title>
+  <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+  <h1>Tienda de ropa</h1>
+  <nav th:replace="~{fragments/nav}"></nav>
+</header>
+
+  <main>
+    <h2>Nueva prenda</h2>
+    <form action="/prendas/nueva" method="POST">
+      <label>Marca:</label>
+      <input name="marca" placeholder="Nombre de la marca">
+      <label>Tipo de prenda:</label>
+      <select name="tipoPrenda">
+        <option value="" disabled selected>Selecciona un tipo</option>
+        <option th:each="tipo : ${tipos}"
+                th:value="${tipo}"
+                th:text="${tipo}">
+        </option>
+      </select>
+      <button>Guardar</button>
+    </form>
+  </main>
+</body>
+</html>

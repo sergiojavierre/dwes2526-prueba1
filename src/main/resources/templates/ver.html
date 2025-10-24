@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Prenda - ' + ${prenda.marca}">Prenda</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<header>
+    <h1>Tienda de ropa</h1>
+    <nav th:replace="~{fragments/nav}"></nav>
+</header>
+
+<main>
+    <h2 th:text="${prenda.marca}">Marca</h2>
+
+    <section>
+        <p><strong>Tipo de prenda:</strong> <span th:text="${prenda.tipoPrenda}">Tipo</span></p>
+    </section>
+
+    <section >
+        <h3>Ejemplares disponibles</h3>
+
+        <table>
+            <thead>
+            <tr>
+                <th>Color</th>
+                <th>Talla</th>
+                <th>Stock</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="ejemplar : ${prenda.ejemplares}">
+                <td th:text="${ejemplar.color}">Azul</td>
+                <td th:text="${ejemplar.talla}">M</td>
+                <td th:text="${ejemplar.stock}">10</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+</main>
+</body>
+</html>
